@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RUBEL · Ruang Belajar</title>
+  <meta name="description" content="RUBEL (Ruang Belajar) — rumah digital untuk belajar satu topik: tujuan, materi, video, lembar kerja, kuis, dan refleksi dalam satu tautan.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Caveat:wght@500;700&family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M32 6C40 20 50 30 50 41a18 18 0 0 1-36 0C14 30 24 20 32 6z' fill='%234F86A8'/%3E%3C/svg%3E">
+</head>
+<body>
+  <a class="skip" href="#main">Langsung ke isi</a>
+
+  <header class="topbar">
+    <a class="brand" href="#beranda" aria-label="RUBEL, kembali ke beranda">
+      <svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true">
+        <path d="M6 22 L24 7 L42 22" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M10 20 V40 Q10 42 12 42 H36 Q38 42 38 40 V20" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+        <path d="M17 42 V30 Q24 27 24 31 Q24 27 31 30 V42" fill="#E9B949" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/>
+        <path d="M24 31 V42" stroke="currentColor" stroke-width="2"/>
+      </svg>
+      <span class="brand-text"><b>RUBEL</b><small>Ruang Belajar</small></span>
+    </a>
+    <p class="subject-chip"><span class="dot"></span> IPAS · Kelas V · Siklus Air</p>
+    <div class="top-actions">
+      <button class="icon-btn" id="textSize" type="button" aria-pressed="false" title="Perbesar atau perkecil tulisan">
+        <span aria-hidden="true">A<b>A</b></span><span class="sr">Ukuran tulisan</span>
+      </button>
+      <button class="icon-btn menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="sidenav">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h11M4 17h16"/></svg>
+        <span>Menu</span>
+      </button>
+    </div>
+  </header>
+
+  <div class="layout">
+    <nav class="sidenav" id="sidenav" aria-label="Halaman RUBEL">
+      <p class="nav-caption">Isi ruang belajar</p>
+      <ol class="nav-list">
+        <li><a href="#beranda" data-nav="beranda"><span class="nav-ico"><svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7M5 10v10h14V10"/></svg></span><span>Beranda<small>Mulai dari sini</small></span></a></li>
+        <li><a href="#tujuan" data-nav="tujuan"><span class="nav-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r=".6"/></svg></span><span>Tujuan<small>Mau ke mana kita?</small></span><i class="tick" data-tick="tujuan"></i></a></li>
+        <li><a href="#materi" data-nav="materi"><span class="nav-ico"><svg viewBox="0 0 24 24"><path d="M4 5c3-1 6-1 8 1 2-2 5-2 8-1v14c-3-1-6-1-8 1-2-2-5-2-8-1z"/><path d="M12 6v14"/></svg></span><span>Materi<small>Dibaca pelan-pelan</small></span><i class="tick" data-tick="materi"></i></a></li>
+        <li><a href="#video" data-nav="video"><span class="nav-ico"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9l5 3-5 3z"/></svg></span><span>Galeri Video<small>Tonton &amp; catat</small></span><i class="tick" data-tick="video"></i></a></li>
+        <li><a href="#lembar" data-nav="lembar"><span class="nav-ico"><svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z"/><path d="M9 11h7M9 15h5"/></svg></span><span>Lembar Kerja<small>Ayo mencoba</small></span><i class="tick" data-tick="lembar"></i></a></li>
+        <li><a href="#kuis" data-nav="kuis"><span class="nav-ico"><svg viewBox="0 0 24 24"><path d="M9 9a3 3 0 1 1 4 2.8c-.8.4-1 1-1 1.7V15"/><circle cx="12" cy="18.5" r=".6"/><circle cx="12" cy="12" r="9"/></svg></span><span>Latihan &amp; Kuis<small>Langsung tahu jawabannya</small></span><i class="tick" data-tick="kuis"></i></a></li>
+        <li><a href="#refleksi" data-nav="refleksi"><span class="nav-ico"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 10h8"/></svg></span><span>Refleksi<small>Ceritakan perasaanmu</small></span><i class="tick" data-tick="refleksi"></i></a></li>
+        <li class="nav-sep"><a href="#ruang" data-nav="ruang"><span class="nav-ico"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.4"/><path d="M3 19c0-3 3-5 6-5s6 2 6 5M15 14.5c3 0 6 1.5 6 4.5"/></svg></span><span>Ruang Guru &amp; Orang Tua<small>Pendamping belajar</small></span></a></li>
+      </ol>
+      <div class="nav-note">
+        <p>Semua yang kamu tulis tersimpan otomatis di perangkat ini.</p>
+      </div>
+    </nav>
+    <div class="nav-backdrop" id="navBackdrop" hidden></div>
+
+    <main id="main" tabindex="-1">
+
+      <!-- ================= BERANDA ================= -->
+      <section class="page" id="beranda" aria-labelledby="h-beranda">
+        <div class="hero">
+          <div class="hero-text">
+            <p class="hand hello">Halo, <span id="helloName">teman</span>! <span class="wave" aria-hidden="true">👋</span></p>
+            <h1 id="h-beranda">Selamat datang di <span class="underline">ruang belajarmu</span>.</h1>
+            <p class="lead">Semua bahan belajar ada di sini, dalam satu tempat. Kamu boleh belajar pelan-pelan, mengulang kapan saja, dan <strong>tidak perlu takut salah</strong>.</p>
+
+            <form class="name-form" id="nameForm" autocomplete="off">
+              <label for="nameInput">Boleh kenalan? Tulis nama panggilanmu</label>
+              <div class="row">
+                <input id="nameInput" type="text" maxlength="24" placeholder="contoh: Dita">
+                <button class="btn btn-soft" type="submit">Simpan</button>
+              </div>
+            </form>
+
+            <div class="hero-cta">
+              <a class="btn btn-primary" href="#tujuan">Mulai belajar <span aria-hidden="true">→</span></a>
+              <a class="btn btn-ghost" id="continueBtn" href="#materi">Lanjutkan yang tadi</a>
+            </div>
+          </div>
+
+          <div class="hero-card" aria-hidden="true">
+            <div class="tape"></div>
+            <p class="hand small">Topik minggu ini</p>
+            <p class="hero-topic">Perjalanan Setetes Air</p>
+            <svg viewBox="0 0 220 170" class="hero-drop">
+              <path class="c-cloud" d="M40 60a18 18 0 0 1 10-32 24 24 0 0 1 44-6 20 20 0 0 1 26 22 14 14 0 0 1-4 16z"/>
+              <path class="c-cloud" d="M130 46a14 14 0 0 1 8-25 19 19 0 0 1 35-5 16 16 0 0 1 21 17 11 11 0 0 1-3 13z" opacity=".7"/>
+              <g class="rain-lines"><path d="M60 72v12M78 76v12M96 72v12"/></g>
+              <g transform="translate(120 118)">
+                <path class="c-drop" d="M0-38C14-18 26-6 26 10a26 26 0 0 1-52 0C-26-6-14-18 0-38z"/>
+                <circle cx="-9" cy="6" r="3" class="c-ink"/><circle cx="9" cy="6" r="3" class="c-ink"/>
+                <path d="M-8 16q8 7 16 0" class="c-ink-line"/>
+                <circle cx="-15" cy="14" r="3.5" class="c-blush"/><circle cx="15" cy="14" r="3.5" class="c-blush"/>
+                <path d="M-14-6q-4 8 0 14" class="c-shine"/>
+              </g>
+              <path class="c-water" d="M0 150q15-8 30 0t30 0 30 0 30 0 30 0 30 0 30 0 30 0V170H0z"/>
+            </svg>
+            <p class="hand hero-caption">"Aku Tetes. Ikuti perjalananku, ya!"</p>
+          </div>
+        </div>
+
+        <div class="card journey">
+          <div class="journey-head">
+            <div>
+              <h2>Perjalananku</h2>
+              <p class="muted" id="journeyText">Kamu belum memulai. Ayo, langkah pertama itu yang paling penting!</p>
+            </div>
+            <div class="ring" id="journeyRing" aria-hidden="true"><svg viewBox="0 0 42 42"><circle cx="21" cy="21" r="17" class="ring-bg"/><circle cx="21" cy="21" r="17" class="ring-fg" id="ringFg"/></svg><span id="ringNum">0/6</span></div>
+          </div>
+          <ol class="journey-path" id="journeyPath"></ol>
+        </div>
+
+        <div class="section-title">
+          <h2>Cara belajar di RUBEL</h2>
+          <p class="muted">Ada tiga waktu belajar. Ikuti urutannya supaya belajarmu lebih ringan.</p>
+        </div>
+        <div class="grid-3">
+          <article class="card when when-1">
+            <span class="when-tag">1 · Sebelum kelas</span>
+            <h3>Kenalan dulu dengan materinya</h3>
+            <ul class="bullets">
+              <li>Baca tujuan belajar.</li>
+              <li>Baca materi dan tonton video.</li>
+              <li>Jawab pertanyaan pemantik di halaman kuis.</li>
+            </ul>
+          </article>
+          <article class="card when when-2">
+            <span class="when-tag">2 · Saat di kelas</span>
+            <h3>Diskusi bersama teman</h3>
+            <ul class="bullets">
+              <li>Bahas bagian yang masih membingungkan.</li>
+              <li>Kerjakan lembar kerja berkelompok.</li>
+              <li>Berani bertanya ke guru.</li>
+            </ul>
+          </article>
+          <article class="card when when-3">
+            <span class="when-tag">3 · Setelah kelas</span>
+            <h3>Ulangi dan renungkan</h3>
+            <ul class="bullets">
+              <li>Kerjakan latihan dan kuis.</li>
+              <li>Tulis refleksi: apa yang sudah dan belum kamu pahami.</li>
+            </ul>
+          </article>
+        </div>
+
+        <aside class="note-paper" aria-label="Pesan dari guru">
+          <p class="hand note-title">Pesan dari gurumu</p>
+          <p id="teacherMsgView"></p>
+        </aside>
+      </section>
+
+      <!-- ================= TUJUAN ================= -->
+      <section class="page" id="tujuan" aria-labelledby="h-tujuan">
+        <header class="page-head">
+          <p class="eyebrow">Tujuan Pembelajaran</p>
+          <h1 id="h-tujuan">Apa yang akan kamu pelajari?</h1>
+          <p class="lead">Tujuan ini seperti peta. Baca dulu supaya kamu tahu mau ke mana. Setelah belajar, <strong>kamu diharapkan bisa:</strong></p>
+        </header>
+
+        <ol class="goals" id="goalList"></ol>
+        <p class="hand hint">Centang kalau kamu merasa sudah bisa. Belum bisa? Tidak apa-apa — justru itu gunanya belajar. 🌱</p>
+
+        <div class="card time-card">
+          <h2>Berapa lama belajarnya?</h2>
+          <p class="muted">Sekitar <strong>50 menit</strong> — dan boleh dicicil. Istirahat sebentar di antaranya juga boleh.</p>
+          <ul class="time-chips">
+            <li><b>Materi</b> 15 menit</li>
+            <li><b>Video</b> 10 menit</li>
+            <li><b>Lembar kerja</b> 15 menit</li>
+            <li><b>Kuis</b> 5 menit</li>
+            <li><b>Refleksi</b> 5 menit</li>
+          </ul>
+        </div>
+
+        <div class="page-next"><a class="btn btn-primary" href="#materi">Lanjut ke Materi <span aria-hidden="true">→</span></a></div>
+      </section>
+
+      <!-- ================= MATERI ================= -->
+      <section class="page" id="materi" aria-labelledby="h-materi">
+        <header class="page-head">
+          <p class="eyebrow">Materi</p>
+          <h1 id="h-materi">Perjalanan Setetes Air</h1>
+          <p class="lead">Materinya dibagi menjadi <strong>5 bagian kecil</strong>. Baca satu bagian, pikirkan sebentar, lalu lanjut. Tidak perlu terburu-buru.</p>
+          <div class="head-actions">
+            <button class="btn btn-ghost btn-sm" type="button" id="printMateri">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>
+              Simpan / cetak materi
+            </button>
+            <span class="muted small">Berguna kalau internet di rumah terbatas.</span>
+          </div>
+        </header>
+
+        <div class="materi-wrap">
+          <figure class="cycle-fig">
+            <svg viewBox="0 0 600 340" class="cycle" role="img" aria-labelledby="cycleTitle">
+              <title id="cycleTitle">Gambar siklus air: air laut menguap, menjadi awan, turun hujan di gunung, lalu mengalir kembali ke laut.</title>
+              <rect width="600" height="340" rx="20" class="c-sky"/>
+              <g class="part" data-p="sun">
+                <circle cx="88" cy="70" r="28" class="c-sun"/>
+                <g class="c-rays"><path d="M88 26v-12M88 114v12M44 70H32M132 70h12M57 39l-8-8M119 101l8 8M119 39l8-8M57 101l-8 8"/></g>
+              </g>
+              <g class="part" data-p="wind">
+                <path d="M340 64q55-26 100-6" class="c-dash"/>
+                <path d="M432 50l10 8-12 4" class="c-arrow"/>
+                <text x="372" y="40" class="svg-label">angin</text>
+              </g>
+              <g class="part" data-p="cloud">
+                <path class="c-cloud" d="M232 100a22 22 0 0 1 10-40 30 30 0 0 1 56-8 25 25 0 0 1 32 27 17 17 0 0 1-4 21z"/>
+                <text x="238" y="130" class="svg-label">mengembun</text>
+              </g>
+              <g class="part" data-p="cloud2">
+                <path class="c-cloud c-cloud-dark" d="M432 100a20 20 0 0 1 9-36 27 27 0 0 1 50-7 22 22 0 0 1 29 24 15 15 0 0 1-4 19z"/>
+              </g>
+              <g class="part" data-p="rain">
+                <g class="rain-lines"><path d="M448 112v14M468 120v14M488 112v14M508 120v14M458 142v14M478 148v14M498 142v14"/></g>
+                <text x="520" y="160" class="svg-label">hujan</text>
+              </g>
+              <g class="part" data-p="ground">
+                <path class="c-ground" d="M292 340V300Q440 286 600 296V340z"/>
+              </g>
+              <g class="part" data-p="mountain">
+                <path class="c-mount" d="M318 304L420 166l34 40 52-72 94 110v60z"/>
+                <path class="c-snow" d="M490 156l16-22 20 24-10-4-8 8-8-8z"/>
+              </g>
+              <g class="part" data-p="river">
+                <path class="c-river" d="M512 214c-20 30-60 36-86 58s-70 26-126 20"/>
+                <text x="382" y="250" class="svg-label">mengalir</text>
+              </g>
+              <g class="part" data-p="soak">
+                <g class="c-soak"><path d="M470 306v18M464 318l6 7 6-7M540 304v18M534 316l6 7 6-7"/></g>
+                <text x="484" y="336" class="svg-label sm">meresap</text>
+              </g>
+              <g class="part" data-p="sea">
+                <path class="c-water" d="M0 262q25-10 50 0t50 0 50 0 50 0 50 0 50 0V340H0z"/>
+                <text x="26" y="312" class="svg-label light">laut</text>
+              </g>
+              <g class="part" data-p="evap">
+                <path d="M128 244q-8-12 0-24t0-24 0-24" class="c-dash"/>
+                <path d="M172 244q-8-12 0-24t0-24 0-24" class="c-dash"/>
+                <path d="M216 244q-8-12 0-24t0-24 0-24" class="c-dash"/>
+                <path d="M121 176l7-10 7 10M165 176l7-10 7 10M209 176l7-10 7 10" class="c-arrow"/>
+                <text x="60" y="206" class="svg-label">menguap</text>
+              </g>
+              <g id="tetes" class="tetes">
+                <path class="c-drop" d="M0-20C8-10 14-3 14 6a14 14 0 0 1-28 0C-14-3-8-10 0-20z"/>
+                <circle cx="-5" cy="4" r="1.8" class="c-ink"/><circle cx="5" cy="4" r="1.8" class="c-ink"/>
+                <path d="M-4 9q4 4 8 0" class="c-ink-line"/>
+              </g>
+            </svg>
+            <figcaption class="hand" id="cycleCaption">Ini Tetes. Perhatikan di mana ia berada.</figcaption>
+          </figure>
+
+          <div class="materi-body">
+            <div class="step-dots" id="stepDots" role="tablist" aria-label="Bagian materi"></div>
+            <article class="card chunk" id="chunkBox" aria-live="polite"></article>
+            <div class="chunk-nav">
+              <button class="btn btn-ghost" id="prevChunk" type="button"><span aria-hidden="true">←</span> Sebelumnya</button>
+              <button class="btn btn-primary" id="nextChunk" type="button">Aku paham, lanjut <span aria-hidden="true">→</span></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="print-only" id="printMateriAll"></div>
+      </section>
+
+      <!-- ================= VIDEO ================= -->
+      <section class="page" id="video" aria-labelledby="h-video">
+        <header class="page-head">
+          <p class="eyebrow">Galeri Video</p>
+          <h1 id="h-video">Tonton, jeda, lalu catat</h1>
+          <p class="lead">Videonya pendek-pendek, paling lama 5 menit. Kamu boleh menjeda dan mengulang sesukamu.</p>
+        </header>
+
+        <div class="card strategy">
+          <h2>Cara menonton yang cerdas</h2>
+          <ol class="strategy-steps">
+            <li><span class="num">1</span><div><b>Sebelum menonton</b><p>Baca judulnya. Tebak: kira-kira videonya akan membahas apa?</p></div></li>
+            <li><span class="num">2</span><div><b>Saat menonton</b><p>Tekan jeda kalau ada yang penting. Tulis di kotak “Catatanku”.</p></div></li>
+            <li><span class="num">3</span><div><b>Sesudah menonton</b><p>Ceritakan ulang isi video dengan satu kalimat, pakai kata-katamu sendiri.</p></div></li>
+          </ol>
+        </div>
+
+        <div class="video-list" id="videoList"></div>
+
+        <div class="page-next"><a class="btn btn-primary" href="#lembar">Lanjut ke Lembar Kerja <span aria-hidden="true">→</span></a></div>
+      </section>
+
+      <!-- ================= LEMBAR KERJA ================= -->
+      <section class="page" id="lembar" aria-labelledby="h-lembar">
+        <header class="page-head">
+          <p class="eyebrow">Lembar Kerja</p>
+          <h1 id="h-lembar">Percobaan: Hujan di Dalam Gelas</h1>
+          <p class="lead">Kita akan membuat “siklus air mini”. Kerjakan bersama kelompokmu di kelas, atau bersama orang tua di rumah.</p>
+          <div class="head-actions">
+            <button class="btn btn-ghost btn-sm" type="button" onclick="window.print()">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 9V3h10v6M7 17H4v-7h16v7h-3M7 14h10v7H7z"/></svg>
+              Cetak lembar kerja
+            </button>
+            <span class="save-state" data-save-state>Tersimpan otomatis</span>
+          </div>
+        </header>
+
+        <div class="lk-grid">
+          <div class="card">
+            <h2>Alat dan bahan</h2>
+            <ul class="check-list">
+              <li>1 gelas bening (lebih bagus dari kaca)</li>
+              <li>Air hangat secukupnya</li>
+              <li>Piring kecil untuk menutup gelas</li>
+              <li>Beberapa potong es batu</li>
+            </ul>
+            <p class="safety"><b>Hati-hati!</b> Minta bantuan orang dewasa saat menuang air hangat.</p>
+          </div>
+          <div class="card">
+            <h2>Langkah-langkah</h2>
+            <ol class="steps">
+              <li>Isi gelas dengan air hangat kira-kira sepertiga bagian.</li>
+              <li>Tutup gelas dengan piring kecil.</li>
+              <li>Letakkan es batu di atas piring.</li>
+              <li>Amati bagian bawah piring dan dinding gelas selama 10 menit.</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Tabel pengamatan</h2>
+          <p class="muted">Tulis apa yang kamu lihat. Tidak ada jawaban yang salah di sini — tulis saja apa adanya.</p>
+          <div class="table-wrap">
+            <table class="obs">
+              <thead><tr><th scope="col">Waktu</th><th scope="col">Apa yang terlihat di bawah piring dan dinding gelas?</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Menit ke-1</th><td><input type="text" data-save="lk.obs1" aria-label="Pengamatan menit ke-1" placeholder="contoh: belum ada apa-apa"></td></tr>
+                <tr><th scope="row">Menit ke-5</th><td><input type="text" data-save="lk.obs5" aria-label="Pengamatan menit ke-5"></td></tr>
+                <tr><th scope="row">Menit ke-10</th><td><input type="text" data-save="lk.obs10" aria-label="Pengamatan menit ke-10"></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Ayo berpikir</h2>
+          <div class="qa">
+            <label for="lkq1"><span class="qnum">1</span> Muncul titik-titik air di bawah piring. Dari mana asalnya?</label>
+            <textarea id="lkq1" rows="2" data-save="lk.q1"></textarea>
+          </div>
+          <div class="qa">
+            <label for="lkq2"><span class="qnum">2</span> Kenapa es batu membantu titik air muncul lebih cepat?</label>
+            <textarea id="lkq2" rows="2" data-save="lk.q2"></textarea>
+          </div>
+          <div class="qa">
+            <label for="lkq3"><span class="qnum">3</span> Bagian percobaan mana yang mirip dengan <em>menguap</em>, <em>mengembun</em>, dan <em>hujan</em>?</label>
+            <textarea id="lkq3" rows="3" data-save="lk.q3"></textarea>
+          </div>
+          <div class="qa">
+            <label for="lkq4"><span class="qnum">4</span> Gambarkan atau ceritakan percobaanmu dengan kata-katamu sendiri.</label>
+            <textarea id="lkq4" rows="3" data-save="lk.q4"></textarea>
+          </div>
+          <div class="lk-done">
+            <button class="btn btn-primary" type="button" id="lkDone">Tandai lembar kerja selesai ✓</button>
+            <span class="hand" id="lkDoneMsg"></span>
+          </div>
+        </div>
+
+        <div class="page-next"><a class="btn btn-primary" href="#kuis">Lanjut ke Latihan &amp; Kuis <span aria-hidden="true">→</span></a></div>
+      </section>
+
+      <!-- ================= KUIS ================= -->
+      <section class="page" id="kuis" aria-labelledby="h-kuis">
+        <header class="page-head">
+          <p class="eyebrow">Latihan &amp; Kuis</p>
+          <h1 id="h-kuis">Yuk, cek pemahamanmu</h1>
+          <p class="lead">Setelah menjawab, kamu <strong>langsung tahu</strong> benar atau belum, beserta penjelasannya. Salah itu wajar — dari situ kita belajar.</p>
+        </header>
+
+        <div class="card pemantik">
+          <p class="eyebrow">Pertanyaan pemantik · jawab sebelum kelas</p>
+          <label for="pemantik" class="pemantik-q">Setelah hujan, jalanan basah dan ada genangan. Besok siangnya, jalanan sudah kering. Ke mana perginya air itu?</label>
+          <textarea id="pemantik" rows="3" data-save="pemantik" placeholder="Tulis tebakanmu di sini. Tebakan juga boleh!"></textarea>
+          <span class="save-state" data-save-state>Tersimpan otomatis</span>
+        </div>
+
+        <div class="card quiz" id="quizBox" aria-live="polite"></div>
+
+        <div class="page-next"><a class="btn btn-primary" href="#refleksi">Lanjut ke Refleksi <span aria-hidden="true">→</span></a></div>
+      </section>
+
+      <!-- ================= REFLEKSI ================= -->
+      <section class="page" id="refleksi" aria-labelledby="h-refleksi">
+        <header class="page-head">
+          <p class="eyebrow">Refleksi</p>
+          <h1 id="h-refleksi">Bagaimana belajarmu hari ini?</h1>
+          <p class="lead">Refleksi artinya melihat kembali apa yang sudah kamu pelajari. Jawab dengan jujur, ya. Tulisanmu membantu guru tahu bagian mana yang perlu dibahas lagi.</p>
+        </header>
+
+        <form class="card reflect" id="reflectForm">
+          <fieldset class="moods">
+            <legend>Bagaimana perasaanmu setelah belajar?</legend>
+            <div class="mood-row" id="moodRow"></div>
+          </fieldset>
+
+          <div class="qa">
+            <label for="rf1">Hari ini aku belajar tentang…</label>
+            <textarea id="rf1" rows="2" data-save="rf.draft1"></textarea>
+          </div>
+          <div class="qa">
+            <label for="rf2">Bagian yang masih membuatku bingung adalah…</label>
+            <textarea id="rf2" rows="2" data-save="rf.draft2" placeholder="Kalau tidak ada, tulis “tidak ada”."></textarea>
+          </div>
+          <div class="qa">
+            <label for="rf3">Aku ingin bertanya kepada guru…</label>
+            <textarea id="rf3" rows="2" data-save="rf.draft3"></textarea>
+          </div>
+
+          <div class="qa">
+            <label for="rfConf">Seberapa yakin kamu bisa menjelaskan siklus air ke temanmu?</label>
+            <div class="range-row">
+              <span class="small muted">belum yakin</span>
+              <input type="range" id="rfConf" min="1" max="5" step="1" value="3">
+              <span class="small muted">sangat yakin</span>
+            </div>
+          </div>
+
+          <button class="btn btn-primary" type="submit">Simpan refleksiku</button>
+        </form>
+
+        <div class="journal" id="journalBox"></div>
+
+        <div class="page-next"><a class="btn btn-ghost" href="#beranda"><span aria-hidden="true">←</span> Kembali ke Beranda</a></div>
+      </section>
+
+      <!-- ================= RUANG GURU & ORANG TUA ================= -->
+      <section class="page" id="ruang" aria-labelledby="h-ruang">
+        <header class="page-head">
+          <p class="eyebrow">Ruang Guru &amp; Orang Tua</p>
+          <h1 id="h-ruang">Untuk yang mendampingi</h1>
+          <p class="lead">RUBEL <strong>tidak menggantikan guru</strong>. Perencanaan, pendampingan, dan penilaian tetap ada di tangan Bapak/Ibu. Halaman ini membantu pekerjaan itu terasa lebih ringan.</p>
+        </header>
+
+        <div class="tabs" role="tablist" aria-label="Pilih pendamping">
+          <button role="tab" id="tab-guru" aria-controls="panel-guru" aria-selected="true" class="tab">Untuk Guru</button>
+          <button role="tab" id="tab-ortu" aria-controls="panel-ortu" aria-selected="false" class="tab" tabindex="-1">Untuk Orang Tua</button>
+        </div>
+
+        <!-- Guru -->
+        <div role="tabpanel" id="panel-guru" aria-labelledby="tab-guru" class="tabpanel">
+          <div class="card">
+            <h2>Siklus kerja RUBEL</h2>
+            <p class="muted">Lima langkah yang terus berputar. Hasil langkah ke-5 menjadi bahan untuk langkah ke-1 di pertemuan berikutnya.</p>
+            <ol class="loop">
+              <li><span class="num">1</span><b>Siapkan</b><p>Isi materi, video, dan kuis, lalu terbitkan situs.</p></li>
+              <li><span class="num">2</span><b>Bagikan</b><p>Kirim tautan ke grup kelas atau tempel kode QR di papan.</p></li>
+              <li><span class="num">3</span><b>Siswa belajar</b><p>Siswa belajar sesuai kecepatannya dan langsung dapat umpan balik.</p></li>
+              <li><span class="num">4</span><b>Rekap otomatis</b><p>Jawaban kuis masuk ke rekap (Google Sheets).</p></li>
+              <li><span class="num">5</span><b>Baca rekap</b><p>Sebelum kelas, lihat soal yang paling banyak keliru untuk dibahas.</p></li>
+            </ol>
+            <p class="hand loop-back">…lalu kembali ke langkah 1 ↺</p>
+          </div>
+
+          <div class="card">
+            <div class="card-head">
+              <div>
+                <h2>Rekap hasil kuis</h2>
+                <p class="muted small" id="rekapSource">Data dari perangkat ini.</p>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="demoToggle">
+                <span class="switch-ui" aria-hidden="true"></span>
+                <span>Tampilkan contoh satu kelas</span>
+              </label>
+            </div>
+            <div id="rekapBox"></div>
+          </div>
+
+          <div class="grid-2">
+            <div class="card">
+              <h2>Bagikan ke kelas</h2>
+              <p class="muted">Tempel alamat situs, lalu cetak kode QR-nya untuk ditempel di papan tulis.</p>
+              <label for="shareUrl" class="field-label">Alamat situs</label>
+              <div class="row">
+                <input type="url" id="shareUrl" placeholder="https://sites.google.com/...">
+                <button class="btn btn-soft" type="button" id="copyUrl">Salin</button>
+              </div>
+              <div class="qr-wrap">
+                <div id="qrBox" class="qr-box" aria-label="Kode QR situs"></div>
+                <p class="small muted" id="qrNote"></p>
+              </div>
+            </div>
+
+            <div class="card">
+              <h2>Atur isi halaman</h2>
+              <form id="settingsForm">
+                <label for="teacherMsg" class="field-label">Pesan untuk siswa (tampil di Beranda)</label>
+                <textarea id="teacherMsg" rows="3"></textarea>
+                <p class="field-label">Tautan YouTube untuk Galeri Video</p>
+                <div class="video-urls" id="videoUrls"></div>
+                <button class="btn btn-primary" type="submit">Simpan perubahan</button>
+              </form>
+            </div>
+          </div>
+
+          <div class="card">
+            <h2>Panduan singkat</h2>
+            <p class="muted">Untuk Bapak/Ibu yang membangun RUBEL sendiri di Google Sites.</p>
+            <div class="accordion">
+              <details>
+                <summary>Memulai situs di Google Sites</summary>
+                <ol class="steps">
+                  <li>Masuk dengan akun Google, sebaiknya akun <b>belajar.id</b> milik sekolah.</li>
+                  <li>Buka <b>sites.google.com</b>, lalu pilih <b>Situs Kosong</b>.</li>
+                  <li>Tentukan nama dan tema sekali di awal agar semua halaman seragam.</li>
+                  <li>Buat halaman: Beranda, Tujuan, Materi, Galeri Video, Lembar Kerja, Latihan &amp; Kuis, Refleksi, Ruang Guru &amp; Orang Tua.</li>
+                </ol>
+              </details>
+              <details>
+                <summary>Menyisipkan materi dan video</summary>
+                <ol class="steps">
+                  <li>Di panel kanan, pilih <b>Sisipkan → Drive</b> untuk Google Docs atau Slides.</li>
+                  <li>Materi yang diperbaiki di Docs/Slides akan <b>ikut berubah otomatis</b> di situs.</li>
+                  <li>Untuk video, pilih <b>Sisipkan → YouTube</b>. Pilih video pendek (SD: maksimal 5 menit).</li>
+                </ol>
+              </details>
+              <details>
+                <summary>Membuat kuis yang langsung memberi umpan balik</summary>
+                <ol class="steps">
+                  <li>Buat Google Forms, buka <b>Setelan → Jadikan kuis</b>.</li>
+                  <li>Isi <b>kunci jawaban</b> dan tulis penjelasan singkat untuk jawaban benar dan salah.</li>
+                  <li>Di tab <b>Jawaban</b>, tautkan ke Google Sheets agar rekap terkumpul otomatis.</li>
+                  <li>Sisipkan formulir ke halaman Latihan &amp; Kuis.</li>
+                </ol>
+              </details>
+              <details>
+                <summary>Kalau perangkat atau internet siswa terbatas</summary>
+                <ul class="bullets">
+                  <li>Sediakan materi yang bisa diunduh atau dicetak.</li>
+                  <li>Jangan jadikan semua tugas bergantung pada internet.</li>
+                  <li>Beri waktu mengerjakan kuis di sekolah bagi yang tidak bisa dari rumah.</li>
+                </ul>
+              </details>
+              <details>
+                <summary>Menyesuaikan dengan jenjang SD, SMP, SMA</summary>
+                <ul class="bullets">
+                  <li><b>SD:</b> teks pendek, gambar besar, video maksimal 5 menit, perlu didampingi.</li>
+                  <li><b>SMP:</b> materi bertahap, latihan bertingkat, mulai belajar mandiri dengan batas waktu jelas.</li>
+                  <li><b>SMA/SMK:</b> materi lebih padat, studi kasus, tugas proyek, dan latihan langsung.</li>
+                </ul>
+              </details>
+            </div>
+          </div>
+        </div>
+
+        <!-- Orang tua -->
+        <div role="tabpanel" id="panel-ortu" aria-labelledby="tab-ortu" class="tabpanel" hidden>
+          <div class="card ortu-intro">
+            <h2>Bapak/Ibu tidak perlu menjadi ahli IPA</h2>
+            <p>Yang anak butuhkan adalah <strong>teman yang mau mendengarkan</strong>. Cukup temani 15–20 menit, tanyakan apa yang ia pelajari, dan beri semangat ketika ia kesulitan.</p>
+          </div>
+
+          <div class="grid-2">
+            <div class="card">
+              <h2>Empat cara mendampingi</h2>
+              <ol class="tips">
+                <li><b>Tanya, jangan menguji.</b> “Tadi belajar apa?” lebih enak didengar daripada “Sudah hafal belum?”</li>
+                <li><b>Biarkan anak mencoba dulu.</b> Bantu hanya ketika ia benar-benar buntu.</li>
+                <li><b>Rayakan usaha, bukan hanya nilai.</b> “Kamu tekun sekali tadi” sangat berarti.</li>
+                <li><b>Cari waktu yang sama setiap hari.</b> Belajar sedikit tapi rutin lebih baik daripada lama tapi jarang.</li>
+              </ol>
+            </div>
+            <div class="card">
+              <h2>Obrolan ringan di meja makan</h2>
+              <p class="muted">Pertanyaan ini bisa ditanyakan sambil santai:</p>
+              <ul class="talk">
+                <li>“Kenapa gelas es teh bagian luarnya basah, ya?”</li>
+                <li>“Kalau jemuran kering, airnya pergi ke mana?”</li>
+                <li>“Awan itu sebenarnya terbuat dari apa?”</li>
+                <li>“Bagaimana cara keluarga kita menghemat air?”</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card">
+            <h2>Sejauh mana anak sudah belajar?</h2>
+            <p class="muted">Ringkasan dari perangkat ini.</p>
+            <ul class="parent-progress" id="parentProgress"></ul>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer class="footer">
+    <p><b>RUBEL · Ruang Belajar</b> — satu tautan untuk semua bahan belajar.</p>
+    <p class="muted small">Dirancang oleh Aqila Humayda · S1 Teknologi Pendidikan, FKIP Universitas Sebelas Maret · 2026</p>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
+  <script src="js/data.js" defer></script>
+  <script src="js/app.js" defer></script>
+</body>
+</html>
